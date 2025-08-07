@@ -14,14 +14,14 @@
           </div>
         </div>
         <div class="flex items-center gap-1">
-          <button :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-300 hover:text-gray-900']">
+          <button @click="setView('map')" :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', view === 'map' ? (theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white') : (theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-300 hover:text-gray-900')]">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map h-4 w-4 mr-2">
               <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"></path>
               <path d="M15 5.764v15"></path>
               <path d="M9 3.236v15"></path>
             </svg>Карта
           </button>
-          <button :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', theme === 'dark' ? 'bg-primary text-primary-foreground hover:bg-gray-800 hover:text-gray-100' : 'bg-blue-600 text-white hover:bg-blue-700']">
+          <button @click="setView('table')" :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', view === 'table' ? (theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white') : (theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-300 hover:text-gray-900')]">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table h-4 w-4 mr-2">
               <path d="M12 3v18"></path>
               <rect width="18" height="18" x="3" y="3" rx="2"></rect>
@@ -29,20 +29,15 @@
               <path d="M3 15h18"></path>
             </svg>Таблиця
           </button>
-          <button :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-300 hover:text-gray-900']">
+          <button @click="setView('cards')" :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', view === 'cards' ? (theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white') : (theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-300 hover:text-gray-900')]">
             <div class="flex items-center mr-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map h-3 w-3">
-                <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"></path>
-                <path d="M15 5.764v15"></path>
-                <path d="M9 3.236v15"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid h-3 w-3">
+                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table h-3 w-3 ml-1">
-                <path d="M12 3v18"></path>
-                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                <path d="M3 9h18"></path>
-                <path d="M3 15h18"></path>
-              </svg>
-            </div>Змішаний
+            </div>Карточки
           </button>
         </div>
         <button :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-8 px-3 text-sm transition-colors', theme === 'dark' ? 'bg-gray-800 border border-gray-600 text-gray-200 hover:bg-gray-700 hover:text-gray-100' : 'bg-gray-200 border border-gray-300 text-gray-900 hover:bg-gray-300 hover:text-gray-900']" type="button" id="radix-_r_0_" aria-haspopup="menu" aria-expanded="false" data-state="closed">
@@ -83,7 +78,7 @@
         </button>
       </div>
     </div>
-    <!-- Table Section -->
+    <!-- Main Content -->
     <div class="flex-1 flex min-h-0 relative">
       <div class="flex-1 min-h-0">
         <div class="h-full">
@@ -148,7 +143,7 @@
                     </svg>
                     <span class="ml-2">Підписи</span>
                   </button>
-                  <button :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-10 px-4 transition-colors', theme === 'dark' ? 'bg-gray-800 border border-gray-600 text-gray-200 hover:bg-gray-700 hover:text-gray-100' : 'bg-gray-200 border border-gray-300 text-gray-900 hover:bg-gray-300 hover:text-gray-900']" data-state="closed">
+                  <button @click="toggleAccessMenu" :class="['inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md h-10 px-4 transition-colors', theme === 'dark' ? 'bg-gray-800 border border-gray-600 text-gray-200 hover:bg-gray-700 hover:text-gray-100' : 'bg-gray-200 border border-gray-300 text-gray-900 hover:bg-gray-300 hover:text-gray-900']" :data-state="isAccessMenuOpen ? 'open' : 'closed'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield h-4 w-4">
                       <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
                     </svg>
@@ -156,9 +151,17 @@
                   </button>
                 </div>
               </div>
-              <!-- Table -->
+              <!-- Content based on view -->
               <div class="flex-1 overflow-hidden min-h-0 relative">
-                <div class="h-full overflow-auto">
+                <!-- Map View (Placeholder) -->
+                <div v-if="view === 'map'" class="h-full flex items-center justify-center">
+                  <div :class="['text-center', theme === 'dark' ? 'text-gray-400' : 'text-gray-600']">
+                    <h2 class="text-lg font-semibold">Карта (в розробці)</h2>
+                    <p>Тут буде відображатися карта з розташуванням будівель.</p>
+                  </div>
+                </div>
+                <!-- Table View -->
+                <div v-if="view === 'table'" class="h-full overflow-auto">
                   <table class="w-full border-collapse">
                     <thead class="sticky top-0 z-10">
                       <tr :class="['border-b', theme === 'dark' ? 'bg-gray-900 border-gray-700' : 'bg-gray-200 border-gray-300']">
@@ -198,7 +201,7 @@
                               </svg>
                             </button>
                             <button :class="['inline-flex items-center justify-center whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-7 w-7 rounded-full transition-colors', theme === 'dark' ? 'hover:bg-gray-800 hover:text-gray-100' : 'hover:bg-gray-200 hover:text-gray-900']">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen h-3 w-3">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen h-3 w-3">
                                 <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                 <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                               </svg>
@@ -216,10 +219,62 @@
                     </tbody>
                   </table>
                 </div>
+                <!-- Cards View -->
+                <div v-if="view === 'cards'" class="h-full overflow-auto p-4">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div v-for="building in filteredBuildings" :key="building.id" :class="['p-4 rounded-lg border shadow-sm', theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200']">
+                      <div class="flex items-center justify-between mb-3">
+                        <h3 :class="['text-lg font-semibold', theme === 'dark' ? 'text-gray-100' : 'text-gray-900']">{{ building.name }}</h3>
+                        <div class="flex items-center gap-1">
+                          <button :class="['inline-flex items-center justify-center h-7 w-7 rounded-full transition-colors', theme === 'dark' ? 'hover:bg-gray-700 hover:text-gray-100' : 'hover:bg-gray-200 hover:text-gray-900']">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-4 w-4">
+                              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                              <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                          </button>
+                          <button :class="['inline-flex items-center justify-center h-7 w-7 rounded-full transition-colors', theme === 'dark' ? 'hover:bg-gray-700 hover:text-gray-100' : 'hover:bg-gray-200 hover:text-gray-900']">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen h-4 w-4">
+                              <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                              <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
+                            </svg>
+                          </button>
+                          <button :class="['inline-flex items-center justify-center h-7 w-7 rounded-full transition-colors', theme === 'dark' ? 'hover:bg-gray-700 hover:text-gray-100' : 'hover:bg-gray-200 hover:text-gray-900']">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis h-4 w-4">
+                              <circle cx="12" cy="12" r="1"></circle>
+                              <circle cx="19" cy="12" r="1"></circle>
+                              <circle cx="5" cy="12" r="1"></circle>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="space-y-2">
+                        <p v-if="visibleColumns.status" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Статус:</span>
+                          <span :class="['ml-2 px-2 py-1 text-xs font-medium rounded-full', building.status === 'активний' ? (theme === 'dark' ? 'bg-blue-900 text-blue-300' : 'bg-blue-100 text-blue-800') : (theme === 'dark' ? 'bg-yellow-900 text-yellow-300' : 'bg-yellow-100 text-yellow-800')]">{{ building.status }}</span>
+                        </p>
+                        <p v-if="visibleColumns.type" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Тип:</span> {{ building.type }}
+                        </p>
+                        <p v-if="visibleColumns.area" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Площа:</span> {{ building.area.toLocaleString() }} м²
+                        </p>
+                        <p v-if="visibleColumns.height" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Висота:</span> {{ building.height }} м
+                        </p>
+                        <p v-if="visibleColumns.buildYear" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Рік побудови:</span> {{ building.buildYear }}
+                        </p>
+                        <p v-if="visibleColumns.lastCheck" :class="['text-sm', theme === 'dark' ? 'text-gray-200' : 'text-gray-600']">
+                          <span class="font-medium">Остання перевірка:</span> {{ building.lastCheck || '-' }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <!-- Filter, Sort, Info, and Columns Menu -->
-            <div v-if="isFilterMenuOpen || isSortMenuOpen || isInfoMenuOpen || isColumnsMenuOpen" class="absolute top-0 right-0 h-full bg-gray-900 border-gray-700 border-l shadow-lg z-40 flex" style="width: 360px;">
+            <!-- Filter, Sort, Info, Columns, and Access Menu -->
+            <div v-if="isFilterMenuOpen || isSortMenuOpen || isInfoMenuOpen || isColumnsMenuOpen || isAccessMenuOpen" class="absolute top-0 right-0 h-full bg-gray-900 border-gray-700 border-l shadow-lg z-40 flex" style="width: 360px;">
               <div class="w-1 cursor-col-resize hover:bg-blue-500 transition-colors bg-gray-700 flex items-center justify-center relative z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip-vertical h-4 w-4 text-gray-400">
                   <circle cx="9" cy="12" r="1"></circle>
@@ -385,7 +440,7 @@
                           :data-state="visibleColumns[field.value] ? 'checked' : 'unchecked'"
                           value="on"
                           @click="toggleColumn(field.value)"
-                          class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500"
+                          class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500"
                         >
                           <span
                             :data-state="visibleColumns[field.value] ? 'checked' : 'unchecked'"
@@ -394,7 +449,74 @@
                         </button>
                       </div>
                     </div>
+                    <h3 v-if="isAccessMenuOpen" class="text-lg font-semibold text-gray-100">Доступ</h3>
+                    <div v-if="isAccessMenuOpen" class="space-y-4">
+                      <div>
+                        <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Рівень доступу</label>
+                        <button type="button" role="combobox" aria-controls="radix-_r_26_" :aria-expanded="isAccessLevelDropdownOpen" :data-state="isAccessLevelDropdownOpen ? 'open' : 'closed'" @click="toggleAccessLevelDropdown" class="flex h-10 w-full items-center justify-between rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mt-1 bg-gray-800 border-gray-600 text-gray-100">
+                          <span style="pointer-events: none;">{{ selectedAccessLevel || 'Публічний' }}</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4 opacity-50" aria-hidden="true">
+                            <path d="m6 9 6 6 6-6"></path>
+                          </svg>
+                        </button>
+                        <div v-if="isAccessLevelDropdownOpen" class="absolute w-full mt-1 bg-gray-800 border border-gray-600 rounded-md shadow-lg z-50">
+                          <div class="py-1">
+                            <button v-for="level in accessLevels" :key="level" @click="selectAccessLevel(level)" class="w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700">{{ level }}</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                          <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Дозволити перегляд</label>
+                          <button type="button" role="switch" :aria-checked="permissions.view" :data-state="permissions.view ? 'checked' : 'unchecked'" value="on" @click="togglePermission('view')" class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" :class="theme === 'dark' ? 'data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500' : 'data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-gray-300'">
+                            <span :data-state="permissions.view ? 'checked' : 'unchecked'" class="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"></span>
+                          </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Дозволити редагування</label>
+                          <button type="button" role="switch" :aria-checked="permissions.edit" :data-state="permissions.edit ? 'checked' : 'unchecked'" value="on" @click="togglePermission('edit')" class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" :class="theme === 'dark' ? 'data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500' : 'data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-gray-300'">
+                            <span :data-state="permissions.edit ? 'checked' : 'unchecked'" class="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"></span>
+                          </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Дозволити експорт</label>
+                          <button type="button" role="switch" :aria-checked="permissions.export" :data-state="permissions.export ? 'checked' : 'unchecked'" value="on" @click="togglePermission('export')" class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" :class="theme === 'dark' ? 'data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500' : 'data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-gray-300'">
+                            <span :data-state="permissions.export ? 'checked' : 'unchecked'" class="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"></span>
+                          </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Дозволити видалення</label>
+                          <button type="button" role="switch" :aria-checked="permissions.delete" :data-state="permissions.delete ? 'checked' : 'unchecked'" value="on" @click="togglePermission('delete')" class="peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" :class="theme === 'dark' ? 'data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-500' : 'data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-gray-300'">
+                            <span :data-state="permissions.delete ? 'checked' : 'unchecked'" class="pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"></span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium text-gray-200">Користувачі з доступом</label>
+                        <div class="mt-2 space-y-2">
+                          <div v-for="user in usersWithAccess" :key="user.id" class="flex items-center justify-between p-2 rounded border border-gray-700 bg-gray-800">
+                            <span class="text-sm text-gray-200">{{ user.role }}</span>
+                            <button type="button" role="combobox" :aria-controls="`radix-_r_${user.id}`" :aria-expanded="user.isDropdownOpen" :data-state="user.isDropdownOpen ? 'open' : 'closed'" @click="toggleUserAccessDropdown(user.id)" class="flex items-center justify-between rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 w-32 h-8 bg-gray-700 border-gray-600 text-gray-100">
+                              <span style="pointer-events: none;">{{ user.accessLevel || 'Читання' }}</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4 opacity-50" aria-hidden="true">
+                                <path d="m6 9 6 6 6-6"></path>
+                              </svg>
+                            </button>
+                            <div v-if="user.isDropdownOpen" class="absolute w-32 mt-1 bg-gray-800 border border-gray-600 rounded-md shadow-lg z-50" style="top: 100%;">
+                              <div class="py-1">
+                                <button v-for="level in userAccessLevels" :key="level" @click="selectUserAccessLevel(user.id, level)" class="w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700">{{ level }}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div class="p-4 border-t border-gray-700 flex-shrink-0">
+                  <button @click="applySettings" :class="['w-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-md h-10 px-4 transition-colors', theme === 'dark' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-blue-500 text-white hover:bg-blue-600']">
+                    Застосувати
+                  </button>
                 </div>
               </div>
             </div>
@@ -415,19 +537,36 @@ export default {
   data() {
     return {
       theme: 'dark',
+      view: 'table', // Default view
       searchQuery: '',
       isFilterMenuOpen: false,
       isSortMenuOpen: false,
       isInfoMenuOpen: false,
       isColumnsMenuOpen: false,
+      isAccessMenuOpen: false,
       isStatusDropdownOpen: false,
       isTypeDropdownOpen: false,
       isSortFieldDropdownOpen: false,
       isSortOrderDropdownOpen: false,
+      isAccessLevelDropdownOpen: false,
       selectedStatus: '',
       selectedType: '',
       selectedSortField: 'name',
       selectedSortOrder: 'asc',
+      selectedAccessLevel: '',
+      permissions: {
+        view: true,
+        edit: false,
+        export: true,
+        delete: false,
+      },
+      accessLevels: ['Публічний', 'Обмежений', 'Приватний'],
+      userAccessLevels: ['Читання', 'Читання та редагування', 'Повний доступ'],
+      usersWithAccess: [
+        { id: 1, role: 'Адміністратор', accessLevel: 'Читання', isDropdownOpen: false },
+        { id: 2, role: 'Оператор', accessLevel: 'Читання', isDropdownOpen: false },
+        { id: 3, role: 'Інженер', accessLevel: 'Читання', isDropdownOpen: false },
+      ],
       buildings: [
         { id: 1, name: 'Головний корпус реактора', status: 'активний', type: 'Виробничий', area: 12500, height: 45, buildYear: 1985, lastCheck: '2025-01-15' },
         { id: 2, name: 'Машинний зал', status: 'активний', type: 'Виробничий', area: 8200, height: 28, buildYear: 1985, lastCheck: '2025-02-10' },
@@ -492,47 +631,64 @@ export default {
       }
       localStorage.setItem('theme', this.theme);
     },
+    setView(view) {
+      this.view = view;
+      this.closeMenus();
+    },
     toggleFilterMenu() {
       this.isFilterMenuOpen = !this.isFilterMenuOpen;
       this.isSortMenuOpen = false;
       this.isInfoMenuOpen = false;
       this.isColumnsMenuOpen = false;
+      this.isAccessMenuOpen = false;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleSortMenu() {
       this.isSortMenuOpen = !this.isSortMenuOpen;
       this.isFilterMenuOpen = false;
       this.isInfoMenuOpen = false;
       this.isColumnsMenuOpen = false;
+      this.isAccessMenuOpen = false;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleInfoMenu() {
       this.isInfoMenuOpen = !this.isInfoMenuOpen;
       this.isFilterMenuOpen = false;
       this.isSortMenuOpen = false;
       this.isColumnsMenuOpen = false;
+      this.isAccessMenuOpen = false;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleColumnsMenu() {
       this.isColumnsMenuOpen = !this.isColumnsMenuOpen;
       this.isFilterMenuOpen = false;
       this.isSortMenuOpen = false;
       this.isInfoMenuOpen = false;
+      this.isAccessMenuOpen = false;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
-    closeMenus() {
+    toggleAccessMenu() {
+      this.isAccessMenuOpen = !this.isAccessMenuOpen;
       this.isFilterMenuOpen = false;
       this.isSortMenuOpen = false;
       this.isInfoMenuOpen = false;
@@ -541,33 +697,59 @@ export default {
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleStatusDropdown() {
       this.isStatusDropdownOpen = !this.isStatusDropdownOpen;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleTypeDropdown() {
       this.isTypeDropdownOpen = !this.isTypeDropdownOpen;
       this.isStatusDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleSortFieldDropdown() {
       this.isSortFieldDropdownOpen = !this.isSortFieldDropdownOpen;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
     toggleSortOrderDropdown() {
       this.isSortOrderDropdownOpen = !this.isSortOrderDropdownOpen;
       this.isStatusDropdownOpen = false;
       this.isTypeDropdownOpen = false;
       this.isSortFieldDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
     },
-    toggleColumn(field) {
-      this.visibleColumns[field] = !this.visibleColumns[field];
+    toggleAccessLevelDropdown() {
+      this.isAccessLevelDropdownOpen = !this.isAccessLevelDropdownOpen;
+      this.isStatusDropdownOpen = false;
+      this.isTypeDropdownOpen = false;
+      this.isSortFieldDropdownOpen = false;
+      this.isSortOrderDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
+    },
+    toggleUserAccessDropdown(userId) {
+      this.usersWithAccess = this.usersWithAccess.map(user => ({
+        ...user,
+        isDropdownOpen: user.id === userId ? !user.isDropdownOpen : false,
+      }));
+      this.isStatusDropdownOpen = false;
+      this.isTypeDropdownOpen = false;
+      this.isSortFieldDropdownOpen = false;
+      this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
     },
     selectStatus(status) {
       this.selectedStatus = status;
@@ -589,91 +771,73 @@ export default {
       this.isSortOrderDropdownOpen = false;
       this.filterBuildings();
     },
+    selectAccessLevel(level) {
+      this.selectedAccessLevel = level;
+      this.isAccessLevelDropdownOpen = false;
+    },
+    selectUserAccessLevel(userId, level) {
+      this.usersWithAccess = this.usersWithAccess.map(user =>
+        user.id === userId ? { ...user, accessLevel: level, isDropdownOpen: false } : user
+      );
+    },
+    toggleColumn(field) {
+      this.visibleColumns[field] = !this.visibleColumns[field];
+    },
+    togglePermission(permission) {
+      this.permissions[permission] = !this.permissions[permission];
+    },
     filterBuildings() {
-      let result = this.buildings.filter(building => {
-        const matchesSearch = this.searchQuery.trim()
-          ? building.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-          : true;
-        const matchesStatus = this.selectedStatus
-          ? building.status === this.selectedStatus
-          : true;
-        const matchesType = this.selectedType
-          ? building.type === this.selectedType
-          : true;
-        return matchesSearch && matchesStatus && matchesType;
+      let filtered = [...this.buildings];
+      if (this.searchQuery) {
+        filtered = filtered.filter(building =>
+          building.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      }
+
+      if (this.selectedStatus) {
+        filtered = filtered.filter(building => building.status === this.selectedStatus);
+      }
+
+      if (this.selectedType) {
+        filtered = filtered.filter(building => building.type === this.selectedType);
+      }
+
+      filtered.sort((a, b) => {
+        const field = this.selectedSortField || 'name';
+        const order = this.selectedSortOrder === 'asc' ? 1 : -1;
+        if (a[field] < b[field]) return -1 * order;
+        if (a[field] > b[field]) return 1 * order;
+        return 0;
       });
 
-      // Сортування
-      result.sort((a, b) => {
-        const field = this.selectedSortField;
-        let valueA = a[field];
-        let valueB = b[field];
-
-        // Обробка текстових і числових значень
-        if (typeof valueA === 'string') {
-          valueA = valueA.toLowerCase();
-          valueB = valueB.toLowerCase();
-        }
-
-        if (this.selectedSortOrder === 'asc') {
-          return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
-        } else {
-          return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
-        }
-      });
-
-      this.filteredBuildings = result;
+      this.filteredBuildings = filtered;
+    },
+    closeMenus() {
+      this.isFilterMenuOpen = false;
+      this.isSortMenuOpen = false;
+      this.isInfoMenuOpen = false;
+      this.isColumnsMenuOpen = false;
+      this.isAccessMenuOpen = false;
+      this.isStatusDropdownOpen = false;
+      this.isTypeDropdownOpen = false;
+      this.isSortFieldDropdownOpen = false;
+      this.isSortOrderDropdownOpen = false;
+      this.isAccessLevelDropdownOpen = false;
+      this.usersWithAccess.forEach(user => (user.isDropdownOpen = false));
+    },
+    applySettings() {
+      this.filterBuildings();
+      this.closeMenus();
     },
   },
   mounted() {
+    this.filterBuildings();
+  
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || savedTheme === 'light') {
+    if (savedTheme) {
       this.theme = savedTheme;
-    } else {
-      this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      this.applyTheme();
     }
-    this.applyTheme();
-    this.filteredBuildings = [...this.buildings]; // Initialize with all buildings
   },
 };
 </script>
-
-<style scoped>
-/* Стилі для перемикачів у меню "Колонки" */
-.switch {
-  @apply inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-}
-
-.switch[data-state="checked"] {
-  @apply bg-blue-600; /* Колір для увімкненого стану */
-}
-
-.switch[data-state="unchecked"] {
-  @apply bg-gray-500; /* Колір для вимкненого стану */
-}
-
-.switch span {
-  @apply pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform;
-}
-
-.switch span[data-state="checked"] {
-  @apply translate-x-5;
-}
-
-.switch span[data-state="unchecked"] {
-  @apply translate-x-0;
-}
-
-/* Стилі для фокусу та кільця */
-.focus-visible:ring-ring {
-  @apply ring-blue-500;
-}
-
-.focus-visible:ring-offset-background {
-  @apply ring-offset-gray-900; /* Для темної теми */
-}
-
-html:not(.dark) .focus-visible:ring-offset-background {
-  @apply ring-offset-white; /* Для світлої теми */
-}
-</style>
